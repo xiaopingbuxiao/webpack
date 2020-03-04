@@ -12,7 +12,7 @@ class Search extends React.Component {
       <div>
         <div className='search-text'>
           <img src={reactLogo} alt="" srcset="" />
-          Search Text
+          Search Text222
         </div>
         <img src={reactPng}></img>
       </div>
