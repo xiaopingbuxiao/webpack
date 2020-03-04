@@ -2,22 +2,30 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    index:'./src/index.js',
-    search:'./src/serarch.js'
+    index: './src/index.js',
+    search: './src/serarch.js'
   },
-  module:{
-    rules:[
+  module: {
+    rules: [
       {
-        test:/\.js$/,
-        use:'babel-loader'
+        test: /\.js$/,
+        use: 'babel-loader'
       },
       {
-        test:/\.(scss|css)$/,
-        use:[
+        test: /\.(scss|css)$/,
+        use: [
           'style-loader',
           'css-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.(png|jpg|jgeg|git)$/,
+        use: 'file-loader'
+      },
+      {
+        test: /.(woff|woff2|eot|ttf|otf)$/,
+        use: 'file-loader'
       }
     ]
   },
@@ -25,5 +33,5 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js'
   },
-  mode:'production'
+  mode: 'production'
 }
