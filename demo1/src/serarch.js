@@ -4,13 +4,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './search.scss'
-import logo from './img/react.png'
+import reactPng from './img/react.png'
+import reactLogo from './img/react-logo.png'
 class Search extends React.Component {
   render() {
     return (
-      <div className='search-text'>
-        <img src={logo} alt="" srcset="" />
-        Search Text
+      <div>
+        <div className='search-text'>
+          <img src={reactLogo} alt="" srcset="" />
+          Search Text
+        </div>
+        <img src={reactPng}></img>
       </div>
     )
   }

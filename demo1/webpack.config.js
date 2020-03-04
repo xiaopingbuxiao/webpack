@@ -19,9 +19,18 @@ module.exports = {
           'sass-loader'
         ]
       },
+      // {
+      //   test: /\.(png|jpg|jgeg|git)$/,
+      //   use: 'file-loader'
+      // },
       {
         test: /\.(png|jpg|jgeg|git)$/,
-        use: 'file-loader'
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10240
+          }
+        }]
       },
       {
         test: /.(woff|woff2|eot|ttf|otf)$/,
