@@ -1,6 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
   entry: {
     index: './src/index.js',
@@ -59,6 +62,38 @@ module.exports = {
     // new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: `[name][contenthash:8].css`
+    }),
+    new OptimizeCssAssetsWebpackPlugin({
+      assetNameRegExp:/\.css$/,
+      cssProcessor:require('cssnano')
+    }),
+    new HtmlWebpackPlugin({ 
+      template:path.join(__dirname,'./search.html'),//模版中可以使用ejs语法
+      filename:'search.html',
+      chunks:['search'], // 指定html使用那些chunk
+      inject:true,//自动将使用的chunk注入模版
+      minify:{
+        html5:true,
+        collapseWhitespace:true,
+        preserveLineBreaks:false,
+        minifyCSS:true,
+        minifyJS:true,
+        removeComments:false
+      }
+    }),
+    new HtmlWebpackPlugin({ 
+      template:path.join(__dirname,'./index.html'),//模版中可以使用ejs语法
+      filename:'index.html',
+      chunks:['index'], // 指定html使用那些chunk
+      inject:true,//自动将使用的chunk注入模版
+      minify:{
+        html5:true,
+        collapseWhitespace:true,
+        preserveLineBreaks:false,
+        minifyCSS:true,
+        minifyJS:true,
+        removeComments:false
+      }
     })
   ],
   devServer: {
