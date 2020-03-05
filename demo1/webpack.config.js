@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
   entry: {
     index: './src/index.js',
@@ -23,7 +24,8 @@ module.exports = {
       {
         test: /\.(scss|css)$/,
         use: [
-          'style-loader',
+          // 'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ]
@@ -37,7 +39,8 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 10240
+            limit: 10240,
+            name:'img/[name][hash:8].[ext]'
           }
         }]
       },
@@ -49,14 +52,17 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js'
+    filename: '[name][chunkhash:8].js'
   },
-  mode: 'development',
-  plugins:[
-    new webpack.HotModuleReplacementPlugin()
+  mode: 'production',
+  plugins: [
+    // new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin({
+      filename: `[name][contenthash:8].css`
+    })
   ],
-  devServer:{
-    contentBase:'./dist',
-    hot:true
+  devServer: {
+    contentBase: './dist',
+    hot: true
   }
 }
