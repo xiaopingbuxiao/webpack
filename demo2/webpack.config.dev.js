@@ -23,7 +23,14 @@ module.exports = {
         use:[
           'style-loader',
           'css-loader',
-          'sass-loader'
+          'sass-loader',
+          {
+            loader:'px2rem-loader',
+            options:{
+              remUnit:75,
+              remPrecesion:8
+            }
+          }
         ]
       },
       {
