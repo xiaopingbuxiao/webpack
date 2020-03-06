@@ -3,6 +3,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const optimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -26,6 +27,7 @@ module.exports = {
           // 'style-loader',
           miniCssExtractPlugin.loader,
           'css-loader',
+          'postcss-loader',
           'sass-loader'
         ]
       },
@@ -65,5 +67,6 @@ module.exports = {
         removeComments: false
       }
     }),
+    new CleanWebpackPlugin(),// 默认清楚soutput的目录
   ]
 }
