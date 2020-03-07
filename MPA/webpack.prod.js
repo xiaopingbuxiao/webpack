@@ -57,7 +57,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         use: 'babel-loader'
       },
       {
@@ -67,14 +67,14 @@ module.exports = {
           miniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
-          'sass-loader',
           {
             loader: 'px2rem-loader',
             options: {
               remUnit: 75, // 750 设计稿
               remPrecesion: 8
             }
-          }
+          },
+          'sass-loader'
         ]
       },
       {
