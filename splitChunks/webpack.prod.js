@@ -5,7 +5,6 @@ const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const optimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const glob = require('glob')
-const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 
 const setMPA = () => {
   const entry = {}
@@ -111,35 +110,6 @@ module.exports = {
       assetNameRegExp: /\.css$/g,
       cssProcessor: require('cssnano')
     }),
-    /* new htmlWebpackPlugin({
-      template: path.join(__dirname, './index.html'),
-      filename: 'index.html',
-      chunks: ['index'],
-      inject: true,
-      minify: {
-        html5: true,
-        collapseWhitespace: true,
-        preserveLineBreaks: false,
-        minifyCSS: true,
-        minifyJS: true,
-        removeComments: false
-      }
-    }), */
     new CleanWebpackPlugin(),// 默认清楚soutput的目录
-    new HtmlWebpackExternalsPlugin({
-      externals: [
-        {
-          module: 'react',
-          entry: '//unpkg.com/react@16/umd/react.development.js',
-          global: 'React',
-        },
-        {
-          module: 'react-dom',
-          entry: '//unpkg.com/react-dom@16/umd/react-dom.development.js',
-          global: 'ReactDOM',
-        },
-      ],
-    })
-
   ].concat(htmlWebpackPlugins)
 }

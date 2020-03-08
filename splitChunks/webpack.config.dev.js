@@ -2,7 +2,6 @@ const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const glob = require('glob')
-const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 
 
 const setMPA = () => {
@@ -93,19 +92,5 @@ module.exports = {
   },
   plugins:[
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackExternalsPlugin({
-      externals: [
-        {
-          module: 'react',
-          entry: '//unpkg.com/react@16/umd/react.development.js',
-          global: 'React',
-        },
-        {
-          module: 'react-dom',
-          entry: '//unpkg.com/react-dom@16/umd/react-dom.development.js',
-          global: 'ReactDOM',
-        },
-      ],
-    })
   ].concat(htmlWebpackPlugins)
 }
