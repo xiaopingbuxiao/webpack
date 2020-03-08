@@ -1,5 +1,7 @@
 
 import './index.scss'
+import { common } from '../../common'
+console.log(common())
 
 document.getElementById('app').innerHTML = 'hellow webpack'
 

@@ -22,7 +22,7 @@ const setMPA = () => {
     htmlWebpackPlugins.push(new htmlWebpackPlugin({
       template: path.join(__dirname, `./src/${pageName}/index.html`),
       filename: `${pageName}.html`,
-      chunks: [`${pageName}`],
+      chunks: ['commons','React_ReactDOM', `${pageName}`],
       inject: true,
       minify: {
         html5: true,
@@ -44,17 +44,23 @@ const setMPA = () => {
 const { entry, htmlWebpackPlugins } = setMPA();
 
 module.exports = {
-  /*  optimization: {
-     splitChunks: {
-       cacheGroups: {
-         commons: {
-           test: /(react|react-dom)/,
-           name: 'vendors',
-           chunks: 'all'
-         }
-       }
-     }
-   }, */
+  optimization: {
+    splitChunks: {
+      minSize: 0,
+      cacheGroups: {
+        React_ReactDOM: {
+          test: /(react|react-dom)/,
+          name: 'React_ReactDOM',
+          chunks: 'all'
+        },
+        commons: {
+          name: 'commons',
+          chunks: 'all',
+          minChunks: 2
+        }
+      }
+    }
+  },
   /* entry: {
     index: './src/index.js',
     search: './src/search.js'
