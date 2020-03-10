@@ -89,22 +89,34 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _hello__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _world__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
 
-// CONCATENATED MODULE: ./src/hello.js
+
+console.log(Object(_hello__WEBPACK_IMPORTED_MODULE_0__["hello"])() + ' ' + Object(_world__WEBPACK_IMPORTED_MODULE_1__["world"])());
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hello", function() { return hello; });
 function hello() {
   return 'hello';
 }
-// CONCATENATED MODULE: ./src/world.js
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "world", function() { return world; });
 function world() {
   return 'world';
 }
-// CONCATENATED MODULE: ./src/index.js
-
-
-
-if (false) {}
 
 /***/ })
 /******/ ]);

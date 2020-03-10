@@ -26,7 +26,7 @@ module.exports = {
   },
   plugins: [
     // new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new webpack.optimize.ModuleConcatenationPlugin(),
     new htmlWebpackPlugin({
       title: 'scope hoisting',
       template: './index.html',
