@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{7:function(n,t,e){"use strict";e.r(t);var i=e(0),o=e.n(i);t.default=function(){return o.a.createElement("div",null,"动态import组件text")}}}]);
