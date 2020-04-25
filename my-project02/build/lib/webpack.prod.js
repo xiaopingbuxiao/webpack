@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const TerserPlugin = require('terser-webpack-plugin')
 
 const smp = new SpeedMeasurePlugin()
 
@@ -52,6 +53,10 @@ const prodConfig = {
 		],
 	},
 	optimization: {
+		minimize: true,
+		minimizer: [new TerserPlugin({
+			parallel: true,
+		})],
 		runtimeChunk: 'single',
 		splitChunks: {
 			cacheGroups: {
@@ -107,7 +112,13 @@ const prodConfig = {
 		// new BundleAnalyzerPlugin(),
 	],
 	resolve: {
-		modules: path.join(projectRoot, './node_modules'),
+		modules: [path.join(projectRoot, './node_modules')],
+	},
+	stats: {
+		modules: false,
+		children: false,
+		chunks: false,
+		chunkModules: false,
 	},
 }
 
